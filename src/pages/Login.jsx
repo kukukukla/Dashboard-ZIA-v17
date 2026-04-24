@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import '../styles/Login.css';
 
 function Login() {
-    const { login, isLoading, error } = useAuth();
+    const { login, isLoading, error, clearError } = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [localError, setLocalError] = useState('');
 
+    useEffect(() => {
+        clearError();
+    }, [clearError]);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLocalError('');
+
         try {
             await login(email, password);
         } catch (err) {
@@ -32,7 +37,7 @@ function Login() {
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Senha</label>
-                        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" disabled={isLoading} required />
+                        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" disabled={isLoading} minLength={6} required />
                     </div>
                     {(error || localError) && (
                         <div className="error-message">
@@ -44,7 +49,7 @@ function Login() {
                     </button>
                 </form>
                 <div className="login-footer">
-                    <p>Versão 1.0.0 - © 2026 ProjetoZeta</p>
+                    <p>Versão 1.1.0 - © 2026 ProjetoZeta</p>
                 </div>
             </div>
         </div>

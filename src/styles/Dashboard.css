@@ -10,3 +10,18 @@
   flex: 1;
   overflow: hidden;
 }
+
+.dashboard-content {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem;
+  overflow: auto;
+}
+
+@media (max-width: 1200px) {
+  .dashboard-content {
+    grid-template-columns: 1fr;
+  }
+}
