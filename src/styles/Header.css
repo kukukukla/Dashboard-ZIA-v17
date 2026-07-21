@@ -7,8 +7,9 @@
 }
 
 .header-content {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1.5rem;
   align-items: center;
   max-width: 1400px;
   margin: 0 auto;
@@ -22,6 +23,7 @@
 
 .nav-menu ul {
   display: flex;
+  justify-content: center;
   list-style: none;
   gap: 2rem;
 }
@@ -34,4 +36,40 @@
 
 .nav-menu a:hover {
   color: #3498db;
+}
+
+.header-user-panel {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.header-user {
+  font-size: 0.9rem;
+  color: #ecf0f1;
+}
+
+.logout-button {
+  border: 1px solid #95a5a6;
+  background: transparent;
+  color: #fff;
+  padding: 0.45rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 960px) {
+  .header-content {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .nav-menu ul {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
 }
